@@ -19,7 +19,7 @@ $(function () {
           duplicate = true
         }
         })
-        if (!duplicate){
+        if (! localduplicate){
           searchHistory.push(searchBox);
           localStorage.setItem("city", JSON.stringify(searchHistory));
           getHistory();
