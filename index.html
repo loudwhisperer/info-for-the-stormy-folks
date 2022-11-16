@@ -4,9 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital@1&family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital@1&family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
@@ -19,21 +22,35 @@
       <header class="bg-info bg-gradient py-3 rounded m-2">
         <h1 class="text-center text-primary">Weather-Or-Not</h1>
       </header>
-      <section class="px-3 py-1 fw-bold">
+      <section class="px-3 py-1 fw-bold col-lg-3 col-md-3 col-sm-3">
         <div class="card text-center">
           <h2 class="card-header text-light bg-primary">Search City Below</h2>
           <div class="card-body border border-primary rounded-bottom">
             <p class="card-text text-primary">
-             Enter the City you would like to see the 5 Day Weather Forcast for below
+              Enter the City you would like to see the 5 Day Weather Forcast for
+              below
             </p>
-            <input type="text" id="searchvalue" class="card-text"></input>
-            <a id="search" class="btn btn-primary">Search Location</a>
+            <!-- <input type="text" id="searchvalue" class="card-text m-1"></input>
+            <a id="search" class="btn btn-primary">Search Location</a> -->
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="City Name"
+                aria-label="City Name"
+                aria-describedby="basic-addon2"
+                id="searchvalue"
+              />
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary px-1 bg-primary text-white" type="button" id="search">
+                  Search Location
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-      <section id="root">
-
-      </section>
+      <section id="root"></section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
