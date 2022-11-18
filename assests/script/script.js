@@ -4,11 +4,17 @@ $(function () {
   const rootEl = $("#root");
   const cardEl = $("#wecard");
   const historEl = $("#history")
+  //api key
   const appId = "f73bdbc432694a653b9d129f40b58f7d";
+  //sets local Storage
   const searchHistory = JSON.parse(localStorage.getItem("city"))||[];
   let currentLoc = [];
+  // start function for the search location button
   function searchManager(event) {
+    //start try catch for async functions
+    try{
     event.preventDefault();
+    // creates buttons from local storage to show previous searches and does not add duplicates
     let searchBox
     let duplicate = false
     if (event.target.id === "search"){
@@ -19,7 +25,7 @@ $(function () {
           duplicate = true
         }
         })
-        if (! localduplicate){
+        if (!duplicate){
           searchHistory.push(searchBox);
           localStorage.setItem("city", JSON.stringify(searchHistory));
           getHistory();
@@ -27,8 +33,9 @@ $(function () {
     } else { 
       searchBox = $(this).text()
     }
+    //pulls from the 5 days every 3 hours part of open weather API
     let locationUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${searchBox}&units=imperial&appid=${appId}`;
-
+  //gets the lat and long on city by city name then feeds those values into the daily forecast part of the opne weather api and creates the daily forecast card
     async function getForecast(coordinates) {
       const response = await fetch(locationUrl);
       const data = await response.json();
@@ -53,10 +60,14 @@ $(function () {
           rootEl.append(card);
         }
         convertDaily();
+      } else {
+        console.log(response)
+        $("<div></div>").text("Error From Server").appendTo(rootEl)
       }
+      
     }
     getForecast(currentLoc);
-
+    // makes the cards for the next 5 days after the current date
     async function makeCards(){
       rootEl.empty()
       cardEl.empty()
@@ -81,18 +92,24 @@ $(function () {
         $("<p></p>").text(`Wind Speed: ${data.list[i].wind.speed} MPH`).appendTo(card);
         cardEl.append(cardDeck);
        }
+       } else {
+        console.log(response.json())
        }
     }
     makeCards()
+    //end try catch for async functions
+  } catch (error){
+        console.error(error)
+      }
   }
-
+// adds the function to our search location button
   searchBtn.on("click", searchManager);
-
+// creates the buttons that call to past searches 
   function getHistory(){
     historEl.empty()
     searchHistory.forEach(function(city){
       console.log(city)
-      $("<button>").text(city).appendTo(historEl)
+      $("<button>").text(city).addClass("btn btn-primary col-lg-12 col-md-6 col-sm-3 p-2 mx-2 my-1").appendTo(historEl)
     })
   }
   getHistory();
