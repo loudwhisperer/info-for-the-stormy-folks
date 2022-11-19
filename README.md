@@ -15,3 +15,7 @@ The live link for this project is as follows https://loudwhisperer.github.io/inf
 
 MIT License
 
+## Features
+
+- The user can search any city by name and see the current date, 3 hour weather forecast
+
