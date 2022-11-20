@@ -19,6 +19,13 @@ The live link for this project is as follows for your convenince https://loudwhi
 - Once done you will have the full repo then it is just a matter of changing directories to the Weather or Not and use your preffered method for opening it in a code editor.
 
 ## Usage
+When the end user opens up the Weather or Not application they will be greated by the screen pictured below where they will be able to search any city in the world in the input in the search city below card.
+
+![screenshot](/assests/images/start-screen.png)
+
+After searching the user will see a large card printed with the queried city and the current weather for that day, below that will be five cards depicting weather for the following five days and a button to search that city again so the user does not have to type the city out again, if the user were to enter that city into the search again they would not see the button duplicated as that would look messy. This can be seen in the screen shot below:
+
+![screenshot](/assests/images/search-screen.png)
 
 ## License
 
